@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing page and visual design concepts focused on clear messaging, thoughtful layouts and useful website experiences.">
+  <title>Portfolio | Landing Page & Visual Designer</title>
+  <style>
+    :root {
+      --cream: #f8f5ef;
+      --paper: #fffdf9;
+      --ink: #292923;
+      --muted: #706e65;
+      --terra: #b7654b;
+      --line: #e5ded3;
+      --dark: #34352f;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, 90%); margin: auto; }
+    header { padding: 22px 0; border-bottom: 1px solid var(--line); }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-family: Georgia, serif; font-size: 23px; font-weight: bold; text-decoration: none; }
+    .navlinks { display: flex; gap: 25px; flex-wrap: wrap; }
+    .navlinks a { font-size: 13px; text-decoration: none; }
+    .navlinks a:hover, .textlink:hover { color: var(--terra); }
+
+    .hero { padding: 92px 0 82px; }
+    .eyebrow { color: var(--terra); text-transform: uppercase; letter-spacing: 2px; font-size: 11px; font-weight: bold; }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: normal; line-height: 1.15; }
+    h1 { font-size: clamp(43px, 7vw, 76px); letter-spacing: -2px; max-width: 820px; margin: 20px 0; }
+    h1 em { color: var(--terra); font-weight: normal; }
+    .intro { color: var(--muted); font-size: 17px; max-width: 600px; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+    .btn { display: inline-block; padding: 13px 21px; text-decoration: none; font-size: 13px; border: 1px solid var(--ink); }
+    .btn.primary { background: var(--ink); color: white; }
+    .btn:hover { opacity: .8; }
+
+    .note { border-left: 3px solid var(--terra); padding: 12px 18px; background: #f0e9df; color: var(--muted); font-size: 13px; margin-top: 36px; max-width: 650px; }
+
+    section { padding: 72px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 32px; }
+    .section-head h2 { font-size: clamp(32px, 4vw, 45px); margin: 8px 0 0; }
+    .section-head p { max-width: 390px; color: var(--muted); font-size: 14px; margin-bottom: 4px; }
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; }
+    .project { background: var(--paper); border: 1px solid var(--line); overflow: hidden; }
+    .visual { min-height: 245px; display: flex; align-items: center; justify-content: center; padding: 25px; position: relative; overflow: hidden; }
+    .visual::before, .visual::after { content: ""; position: absolute; border-radius: 50%; opacity: .35; }
+    .visual::before { width: 210px; height: 210px; right: -40px; top: -60px; background: #fff5dc; }
+    .visual::after { width: 150px; height: 150px; left: -45px; bottom: -65px; background: #b7654b; }
+    .visual-content { position: relative; z-index: 1; text-align: center; max-width: 330px; }
+    .visual small { text-transform: uppercase; letter-spacing: 2px; font-size: 10px; }
+    .visual h3 { font-size: clamp(27px, 4vw, 39px); margin: 10px 0; }
+    .visual p { font-size: 12px; margin: 0; }
+    .didi { background: #e7d8c5; color: #46382d; }
+    .frshly { background: #dfe7d4; color: #34452e; }
+    .crossfit { background: #d9d8d1; color: #272923; }
+    .cafe { background: #e8d7c9; color: #533d32; }
+    .dentist { background: #dbe7e4; color: #304843; }
+    .project-info { padding: 23px; }
+    .project-top { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+    .project-top h3 { font-size: 25px; margin: 0; }
+    .tag { font-size: 10px; border: 1px solid var(--line); padding: 5px 8px; white-space: nowrap; }
+    .project-info p { font-size: 13px; color: var(--muted); margin: 13px 0; }
+    .project-meta { color: var(--terra); font-size: 11px; letter-spacing: .5px; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: start; }
+    .about-grid h2, .contact h2 { font-size: clamp(35px, 5vw, 52px); margin: 12px 0 20px; }
+    .about-grid p { color: var(--muted); font-size: 15px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 23px; }
+    .skills span { background: var(--paper); border: 1px solid var(--line); padding: 9px 12px; font-size: 12px; }
+    .process { border-top: 1px solid var(--line); }
+    .process-item { display: grid; grid-template-columns: 45px 1fr; gap: 15px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .process-item strong { color: var(--terra); font-family: Georgia, serif; font-size: 20px; }
+    .process-item h3 { font-size: 21px; margin: 0 0 5px; }
+    .process-item p { margin: 0; font-size: 13px; }
+
+    .contact { background: var(--dark); color: var(--paper); padding: 68px 7%; }
+    .contact p { color: #d0cec4; max-width: 520px; }
+    .contact .btn { border-color: var(--paper); color: var(--paper); }
+    .contact .btn.primary { background: var(--paper); color: var(--dark); }
+    footer { padding: 22px 0; color: var(--muted); font-size: 11px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    @media (max-width: 680px) {
+      .hero { padding: 65px 0 55px; }
+      .navlinks { gap: 12px; }
+      .navlinks a { font-size: 12px; }
+      .brand { font-size: 19px; }
+      .projects, .about-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 15px; }
+      section { padding: 52px 0; }
+      .visual { min-height: 220px; }
+      .about-grid { gap: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#home">Portfolio.</a>
+      <div class="navlinks">
+        <a href="#work">Selected work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap hero" id="home">
+      <div class="eyebrow">Landing Page &amp; Visual Designer</div>
+      <h1>Thoughtful design.<br><em>Clearer experiences.</em></h1>
+      <p class="intro">
+        I explore how thoughtful layouts, clear messaging and purposeful
+        visual design can help businesses communicate what makes them special
+        and help visitors find their next step.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#work">Explore selected work ↘</a>
+        <a class="btn" href="#about">A little about me</a>
+      </div>
+      <div class="note">
+        This portfolio features self-initiated design concepts created for
+        practice and exploration. They are not presented as commissioned client
+        projects or as evidence of measured business results.
+      </div>
+    </div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Selected concepts</div>
+            <h2>Design explorations</h2>
+          </div>
+          <p>Different challenges, one shared goal: making digital experiences
+            clearer, more useful and visually considered.</p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="visual didi">
+              <div class="visual-content">
+                <small>Food · Culture · Community</small>
+                <h3>Didi's Kitchen</h3>
+                <p>A taste of Bengal, a place to gather.</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-top">
+                <h3>Didi's Kitchen</h3>
+                <span class="tag">Concept</span>
+              </div>
+              <p>A restaurant landing-page concept centred on Bengali roots,
+                Indian food, storytelling and a welcoming local atmosphere.</p>
+              <div class="project-meta">HOMEPAGE · STORYTELLING · LOCAL DINING</div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="visual frshly">
+              <div class="visual-content">
+                <small>Less waste · More ideas</small>
+                <h3>Frshly</h3>
+                <p>Make the most of what's in your fridge.</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-top">
+                <h3>Frshly</h3>
+                <span class="tag">Concept</span>
+              </div>
+              <p>A food-discovery app concept that helps people organise
+                ingredients and discover ideas for what to cook next.</p>
+              <div class="project-meta">APP CONCEPT · USER FLOW · VISUAL UI</div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="visual crossfit">
+              <div class="visual-content">
+                <small>Strength · Movement · Community</small>
+                <h3>CrossFit South Brooklyn</h3>
+                <p>Find your training community.</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-top">
+                <h3>CrossFit South Brooklyn</h3>
+                <span class="tag">Concept</span>
+              </div>
+              <p>A gym website exploration focused on presenting the training
+                experience, community and useful next steps clearly.</p>
+              <div class="project-meta">WEB DESIGN · CONTENT HIERARCHY</div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="visual cafe">
+              <div class="visual-content">
+                <small>Coffee · Food · Everyday moments</small>
+                <h3>Café Ga Việt</h3>
+                <p>A warm welcome, one cup at a time.</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-top">
+                <h3>Café Ga Việt</h3>
+                <span class="tag">Concept</span>
+              </div>
+              <p>A café landing-page concept exploring atmosphere, brand
+                personality and a clear path to essential visitor information.</p>
+              <div class="project-meta">LANDING PAGE · VISUAL DIRECTION</div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="visual dentist">
+              <div class="visual-content">
+                <small>Care · Clarity · Confidence</small>
+                <h3>Dental Landing Pages</h3>
+                <p>Making the next step feel simple.</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-top">
+                <h3>Dentist Landing Pages</h3>
+                <span class="tag">Concept</span>
+              </div>
+              <p>Landing-page design explorations for dental practices,
+                prioritising readable information, trust and clear contact paths.</p>
+              <div class="project-meta">LANDING PAGE · INFORMATION DESIGN</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div>
+          <div class="eyebrow">A little about me</div>
+          <h2>Design with purpose, not just decoration.</h2>
+          <p>
+            My background includes IT and UI development, along with hands-on
+            exploration of responsive layouts, visual hierarchy and interface
+            design. I'm building a focused portfolio around landing pages
+            and practical website improvements.
+          </p>
+          <p>
+            I enjoy looking at a digital experience from a visitor's
+            perspective: what is clear, what is missing, and what could make
+            the next step easier to understand.
+          </p>
+          <div class="skills">
+            <span>Landing page design</span>
+            <span>Visual hierarchy</span>
+            <span>Responsive layouts</span>
+            <span>Figma</span>
+            <span>UI design</span>
+          </div>
+        </div>
+        <div>
+          <div class="eyebrow">My approach</div>
+          <div class="process">
+            <div class="process-item">
+              <strong>01</strong>
+              <div><h3>Understand</h3><p>Identify the audience, the business goal and the visitor's needs.</p></div>
+            </div>
+            <div class="process-item">
+              <strong>02</strong>
+              <div><h3>Clarify</h3><p>Organise content and make important information easier to find.</p></div>
+            </div>
+            <div class="process-item">
+              <strong>03</strong>
+              <div><h3>Design</h3><p>Create a considered visual direction with clear calls to action.</p></div>
+            </div>
+            <div class="process-item">
+              <strong>04</strong>
+              <div><h3>Refine</h3><p>Review the layout across screen sizes and improve what needs attention.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="eyebrow">Let's connect</div>
+        <h2>Have a website that could work harder?</h2>
+        <p>
+          I'm interested in exploring real website challenges and developing
+          thoughtful, practical design recommendations. If you'd like to
+          discuss a project or exchange ideas, I'd be glad to connect.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">Find me on LinkedIn ↗</a>
+          <a class="btn" href="#work">View selected concepts</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 · Landing Page &amp; Visual Design Portfolio</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
